@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,IAAK;EACH,UAAU,EAAE,GAAG;;;AAEjB,GAAG;EACD,KAAK,EAAC,KAAK;EACX,MAAM,EAAE,KAAK",
+"sources": ["../sass/shoppingCar.scss"],
+"names": [],
+"file": "shoppingCar.css"
+}
