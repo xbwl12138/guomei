@@ -1,17 +1,21 @@
+
+
 // form输入框搜索关键字
-$name("#idja").onchange = function(){
-	let searchLisDom = $name("#search-list").children;
-	for(let i=0;i<searchLisDom.length;i++){
-		searchLisDom[i].onclick = function(){
-			$name("#idja").value = this.innerHTML;
+function inputKeyWord(){
+	$name("#idja").onchange = function(){
+		let searchLisDom = $name("#search-list").children;
+		for(let i=0;i<searchLisDom.length;i++){
+			searchLisDom[i].onclick = function(){
+				$name("#idja").value = this.innerHTML;
+			}
 		}
-	}
-	for(let i=0;i<searchLisDom.length;i++){
-		searchLisDom[i].onmouseover = function(){
-			this.style.backgroundColor = "#eee";
-		}
-		searchLisDom[i].onmouseout = function(){
-			this.style.backgroundColor = "#fff";
+		for(let i=0;i<searchLisDom.length;i++){
+			searchLisDom[i].onmouseover = function(){
+				this.style.backgroundColor = "#eee";
+			}
+			searchLisDom[i].onmouseout = function(){
+				this.style.backgroundColor = "#fff";
+			}
 		}
 	}
 }
@@ -109,103 +113,193 @@ function asideFun(){
 
 
 
+function topActivity(){
 
-
-// 头部活动
-// 点击span活动图片消失消失
-$name("#top_delete").onclick = function(){
-	this.parentNode.style.display = "none";
-}
-// 划过span标签换背景和字体颜色
-$name("#top_delete").onmouseover = function(){
-	this.style.backgroundColor = "#245982";
-	this.children[0].style.backgroundPosition = "-72px -466px";
-
-}
-$name("#top_delete").onmouseout = function(){
-	this.style.backgroundColor = "";
-	this.children[0].style.backgroundPosition = "-60px -466px";
-}
-// // 鼠标进入国美会员
-$name("#li_vip").onmouseover = function(){
-	$name("#li_vip_a").style.cssText = `
-			background-color:#fff;
-			border-left:1px solid #e6e6e6;
-			border-right:1px solid #e6e6e6;
-			border-bottom:1px solid #fff;`;
-	$name("#vip_guoMei").style.cssText = `
-			display:block;`;
-	// 旋转箭头
-	this.firstElementChild.children[0].style.cssText = `
-			transform: rotate(180deg);`;
-}
-// // 鼠标移出
-$name("#li_vip").onmouseout = function(){
-	this.firstElementChild.style.cssText = `
-			background-color:#f8f8f8;
-			border-top:none;
-			`;
-	$name("#vip_guoMei").style.cssText = `
-			display:none;`;
-	this.firstElementChild.children[0].style.cssText = `
-			transform: rotate(0deg);`;
-}
-
-// 抽奖切换
-var myTime1 = null;
-var myTime2 = null;
-var lef = 0;
-$name("#btn_right").onclick = function(){
-	if (myTime1) {
-		return;
+	// 头部活动
+	// 点击span活动图片消失消失
+	$name("#top_delete").onclick = function(){
+		this.parentNode.style.display = "none";
 	}
-	myTime1 = setInterval(function(){
-		lef= lef-8;
-		// 边界判断
-		var n =Math.abs(lef);
-		if (n%208==0) {
-			window.clearInterval(myTime1);
-			myTime1=null;
+	// 划过span标签换背景和字体颜色
+	$name("#top_delete").onmouseover = function(){
+		this.style.backgroundColor = "#245982";
+		this.children[0].style.backgroundPosition = "-72px -466px";
+
+	}
+	$name("#top_delete").onmouseout = function(){
+		this.style.backgroundColor = "";
+		this.children[0].style.backgroundPosition = "-60px -466px";
+	}
+	// 鼠标进入国美会员(未登录)
+	$name("#li_vip").onmouseover = function(){
+		$name("#li_vip_a").style.cssText = `
+				background-color:#fff;
+				border-left:1px solid #e6e6e6;
+				border-right:1px solid #e6e6e6;
+				border-bottom:1px solid #fff;`;
+		$name("#vip_guoMei").style.cssText = `
+				display:block;`;
+		// 旋转箭头
+		this.firstElementChild.children[0].style.cssText = `
+				transform: rotate(180deg);`;
+	}
+	// 鼠标移出
+	$name("#li_vip").onmouseout = function(){
+		this.firstElementChild.style.cssText = `
+				background-color:#f8f8f8;
+				border-top:none;
+				`;
+		$name("#vip_guoMei").style.cssText = `
+				display:none;`;
+		// 登陆成功的
+		this.firstElementChild.children[0].style.cssText = `
+				transform: rotate(0deg);`;
+	}
+
+	// 鼠标进入国美会员(登录)
+	$name("#li_vip2").onmouseover = function(){
+		$name("#li_vip_a2").style.cssText = `
+				background-color:#fff;
+				border-left:1px solid #e6e6e6;
+				border-right:1px solid #e6e6e6;
+				border-bottom:1px solid #fff;`;
+				$name("#guoMeiUser").style.cssText = `font-style:normal;`;
+		$name("#vip_guoMei").style.cssText = `
+				display:block;`;
+		$name("#vip_guoMei_logain").style.cssText = `
+				display:block;`;
+		// 旋转箭头
+		this.firstElementChild.children[1].style.cssText = `
+				transform: rotate(180deg);`;
+	}
+	// 鼠标移出
+	$name("#li_vip2").onmouseout = function(){
+		this.firstElementChild.style.cssText = `
+				background-color:#f8f8f8;
+				border-top:none;
+				`;
+		$name("#vip_guoMei").style.cssText = `
+				display:none;`;
+		$name("#guoMeiUser").style.cssText = `font-style:normal;`;
+		$name("#vip_guoMei_logain").style.cssText = `
+				display:none;`;
+		// 登陆成功的
+		this.firstElementChild.children[1].style.cssText = `
+				transform: rotate(0deg);`;
+	}
+	// 抽奖切换
+	var myTime1 = null;
+	var myTime2 = null;
+	var lef = 0;
+	$name("#btn_right").onclick = function(){
+		if (myTime1) {
+			return;
 		}
-		if(lef<=-416){
-			lef = -416;
-			window.clearInterval(myTime1);
-			myTime1 = null;
-		}
-		
+		myTime1 = setInterval(function(){
+			lef= lef-8;
+			// 边界判断
+			var n =Math.abs(lef);
+			if (n%208==0) {
+				window.clearInterval(myTime1);
+				myTime1=null;
+			}
+			if(lef<=-416){
+				lef = -416;
+				window.clearInterval(myTime1);
+				myTime1 = null;
+			}
+			
+			$name("#btn_center_ul").style.left = lef+"px";
+
+		},20);
+
+	}
+	$name("#btn_left").onclick = function(){
+		if (myTime2) {
+			return;
+		}	
+		myTime2 = setInterval(function(){
+			lef= lef+8;
+			// 边界判断
+			var n =Math.abs(lef);
+			if (n%208==0) {
+				window.clearInterval(myTime2);
+				myTime2=null;
+			}
+			if(lef>=0){
+				lef = 0;
+				window.clearInterval(myTime2);
+				myTime2 = null;
+			}
 		$name("#btn_center_ul").style.left = lef+"px";
 
-	},20);
+		},20);
+	}
+
+	var myTime11 = null;
+	var myTime22 = null;
+	var lef2 = 0;
+	$name("#btn_right2").onclick = function(){
+		if (myTime11) {
+			return;
+		}
+		myTime11 = setInterval(function(){
+			lef2= lef2-8;
+			// 边界判断
+			var n =Math.abs(lef2);
+			if (n%208==0) {
+				window.clearInterval(myTime11);
+				myTime11=null;
+			}
+			if(lef2<=-416){
+				lef2 = -416;
+				window.clearInterval(myTime11);
+				myTime11 = null;
+			}
+			
+			$name("#btn_center_ul2").style.left = lef2+"px";
+
+		},20);
+
+	}
+	$name("#btn_left2").onclick = function(){
+		if (myTime22) {
+			return;
+		}	
+		myTime22 = setInterval(function(){
+			lef2= lef2+8;
+			// 边界判断
+			var n =Math.abs(lef2);
+			if (n%208==0) {
+				window.clearInterval(myTime22);
+				myTime22=null;
+			}
+			if(lef2>=0){
+				lef2 = 0;
+				window.clearInterval(myTime22);
+				myTime22 = null;
+			}
+		$name("#btn_center_ul2").style.left = lef2+"px";
+
+		},20);
+	}
+
+	// 顶部的退出登录
+	$name("#quit_btn").onclick = function(){
+		let username = getCookie("username");
+		let userpass = getCookie("userpass");
+		saveCookie("username",username,-1);
+		saveCookie("userpass",userpass,-1);
+		location.reload();
+	}
 
 }
-$name("#btn_left").onclick = function(){
-	if (myTime2) {
-		return;
-	}	
-	myTime2 = setInterval(function(){
-		lef= lef+8;
-		// 边界判断
-		var n =Math.abs(lef);
-		if (n%208==0) {
-			window.clearInterval(myTime2);
-			myTime2=null;
-		}
-		if(lef>=0){
-			lef = 0;
-			window.clearInterval(myTime2);
-			myTime2 = null;
-		}
-	$name("#btn_center_ul").style.left = lef+"px";
-
-	},20);
-}
-
-
 // 输入框获得焦点
-$name("#idja").onfocus = function(){
-	this.placeholder = "";
+function inputFocus(){
+	$name("#idja").onfocus = function(){
+		this.placeholder = "";
+	}
 }
-
 
 //参数：
 //滑入入的dom对象
@@ -239,10 +333,12 @@ $name("#idja").onfocus = function(){
 // 右边的li
 
 // input框左边的
-var shangpingIdLiDom = $name("#shangpingId_ul").children;
-for(let i=0;i<shangpingIdLiDom.length;i++){
-	shangpingIdLiDom[i].onclick = function(){
-		$name("#shangpingId_ul_sp").innerHTML = this.innerHTML;
+function inputLeft(){
+	var shangpingIdLiDom = $name("#shangpingId_ul").children;
+	for(let i=0;i<shangpingIdLiDom.length;i++){
+		shangpingIdLiDom[i].onclick = function(){
+			$name("#shangpingId_ul_sp").innerHTML = this.innerHTML;
+		}
 	}
 }
 
@@ -259,66 +355,65 @@ function autoBanUl(){
 }
 
 // 全部商品的ul的划过
-let navLiDioms = $name("#navBigUl").children;
-for(let i=0;i<navLiDioms.length;i++){
-	navLiDioms[i].onmouseover = function(){
-		this.style.backgroundColor = "rgba(255,255,255)";
-		this.children[1].style.display = "block";
-	}
-	navLiDioms[i].onmouseout = function(){
-		this.style.backgroundColor = "";
-		this.children[1].style.display = "none";
+function wholeHover(){
+	let navLiDioms = $name("#navBigUl").children;
+	for(let i=0;i<navLiDioms.length;i++){
+		navLiDioms[i].onmouseover = function(){
+			this.style.backgroundColor = "rgba(255,255,255)";
+			this.children[1].style.display = "block";
+		}
+		navLiDioms[i].onmouseout = function(){
+			this.style.backgroundColor = "";
+			this.children[1].style.display = "none";
+		}
 	}
 }
-
 
 // 划过话费的li  下拉框向上移动出现
-var myTimeLi;
-var huaFeiBoxTop = 120;
-// 点击❌消失
-$name("#spanBtnCuo").onclick = function(){
-	$name("#huaFeiBox").style.display = "none";
-	huaFeiBoxTop = 120;
-}
-$name("#huaFeiLi").onmouseover = function(){
-	$name("#huaFeiBox").style.display = "block";
-	myTimeLi = setInterval(function(){
-		huaFeiBoxTop = huaFeiBoxTop-2;
-		if (huaFeiBoxTop <= 72) {
-			huaFeiBoxTop = 72;
-			window.clearInterval(myTimeLi)
-			return;
+function phoneCost(){
+	var myTimeLi;
+	var huaFeiBoxTop = 120;
+	// 点击❌消失
+	$name("#spanBtnCuo").onclick = function(){
+		$name("#huaFeiBox").style.display = "none";
+		huaFeiBoxTop = 120;
+	}
+	$name("#huaFeiLi").onmouseover = function(){
+		$name("#huaFeiBox").style.display = "block";
+		myTimeLi = setInterval(function(){
+			huaFeiBoxTop = huaFeiBoxTop-2;
+			if (huaFeiBoxTop <= 72) {
+				huaFeiBoxTop = 72;
+				window.clearInterval(myTimeLi)
+				return;
+			}
+			// console.log(myTimeLi);
+			// console.log(huaFeiBoxTop);
+		},1);
+		$name("#huaFeiBox").style.top = huaFeiBoxTop+"px";
+	}
+
+	$name("#chZhiMon").onclick = function(){
+		$name("#moneyUlYuan").style.display = "block";
+	}
+
+
+	var moneyArr = ["￥10-10.3元","￥20-20.3元","￥30-30.3元","￥50-50.3元","￥100-100.3元","￥200-200.3元","￥300-300.3元","￥500-500.3元"];
+	var moneyLiDom =  $name("#moneyUlYuan").children;
+	for(let i=0;i<moneyLiDom.length;i++){
+		moneyLiDom[i].onclick = function(){
+			$name("#chZhiMon").placeholder = this.innerHTML;
+			this.parentNode.style.display = "none";
+			$name("#monSpanYuan").innerText = moneyArr[i];
 		}
-		// console.log(myTimeLi);
-		// console.log(huaFeiBoxTop);
-	},1);
-	$name("#huaFeiBox").style.top = huaFeiBoxTop+"px";
-}
-
-$name("#chZhiMon").onclick = function(){
-	$name("#moneyUlYuan").style.display = "block";
-}
-
-
-var moneyArr = ["￥10-10.3元","￥20-20.3元","￥30-30.3元","￥50-50.3元","￥100-100.3元","￥200-200.3元","￥300-300.3元","￥500-500.3元"];
-var moneyLiDom =  $name("#moneyUlYuan").children;
-for(let i=0;i<moneyLiDom.length;i++){
-	moneyLiDom[i].onclick = function(){
-		$name("#chZhiMon").placeholder = this.innerHTML;
-		this.parentNode.style.display = "none";
-		$name("#monSpanYuan").innerText = moneyArr[i];
-	}
-	moneyLiDom[i].onmouseover = function(){
-		this.style.backgroundColor = "#eee";
-	}
-	moneyLiDom[i].onmouseout = function(){
-		this.style.backgroundColor = "";
+		moneyLiDom[i].onmouseover = function(){
+			this.style.backgroundColor = "#eee";
+		}
+		moneyLiDom[i].onmouseout = function(){
+			this.style.backgroundColor = "";
+		}
 	}
 }
-
-
-
-
 var colorArr = ["#db2124","#f16118","#b2e9fe","#0071fe","#ff8a07","0071fe","0071fe","#0071fe"];
 function BannerAutoColor(){
 	var i = 0; 
@@ -371,7 +466,7 @@ function timeCount(){
 	    h=date.getHours(),
 	    m=date.getMinutes(),
 	    s=date.getSeconds();
-  	let stopTime=new Date("7 28 2019 00:00:00"),//结束时间
+  	let stopTime=new Date("8 5 2019 00:00:00"),//结束时间
 	    stopH=stopTime.getHours(),
 	    stopM=stopTime.getMinutes(),
 	    stopS=stopTime.getSeconds();
@@ -402,10 +497,6 @@ function timeCount(){
 	    $name("#timeCount2").children[4].innerHTML = S;
  	setTimeout(timeCount,500);
 }
-
-
-
-// 动态创建商品  开始
 let domDivBann =[];
 let pMovearr =[
 			"三文鱼，大人小孩都爱吃，速速购买，立减200元",
@@ -422,151 +513,154 @@ let pMovearr =[
 			"海信65英寸人工智能电视",
 			"声波电动牙刷少女粉款2刷头 少女粉",
 			"iphoneXR-128G-黑色"];
-for(let i=0;i<8;i++){
-	let domDiv = document.createElement("div")
-	domDiv.style.cssText = `
-			width: 196px;
-			height: 179px;
-			text-align: center;
-			padding: 0 16px;
-			border-right: 1px dashed #eee;
-			float: left;`;
-	let aDiv = document.createElement("a");
-	aDiv.style.cssText = `
-			color: #ff1827;
-			font-size: 24px;`;
-	aDiv.href = "#";
-	domDiv.appendChild(aDiv);
-	let imgDom = document.createElement("img");
-	imgDom.style.cssText =`
-			display: block;
-			margin:0 auto;
-			width: 120px;
-			height: 120px;`;
-	imgDom.src = `indexImg/shopping_${i+1}.webp`;
-	aDiv.appendChild(imgDom);
-	let spanDom = document.createElement("span");
-	spanDom.innerHTML = "￥";
-	spanDom.style.float = "left";
-	aDiv.appendChild(spanDom);
-	let iDom = document.createElement("i");
-	iDom.style.cssText = `
-			font-style: normal;
-			float: left;`;
-	iDom.innerHTML = "23.00";
-	aDiv.appendChild(iDom);
-	let eDom = document.createElement("e");
-	eDom.style.cssText = `
-			color: #999999;
-			margin-top: 12px;
-			float: left;
-			font-size: 12px;
-			padding-left: 2px;
-			text-decoration: line-through;`;
-	eDom.innerHTML = "￥69.9";
-	aDiv.appendChild(eDom);
-	let pDom = document.createElement("p");
-	pDom.style.cssText = `
-			width: 196px;
-			height: 22px;
-			overflow:hidden;
-			color: #5e5e5e;
-			font-size: 14px;
-			line-height: 22px;
-			text-align:left;`;
-	pDom.innerHTML = pMovearr[i];
-	aDiv.appendChild(pDom);
-	$name("#bannerBottom").appendChild(domDiv);
-	domDivBann.push(domDiv);
-}
-domDivBann[3].style.borderRight = "none";
-// 动态创建商品  结束
-// 点击按钮切换商品
-$name("#btnA_sapn2").onclick = function(){
-	for(let i=2;i<6;i++){
-		this.parentNode.children[i].style.display= "none";
+// 动态创建商品  开始
+function createShopping(){
+	for(let i=0;i<8;i++){
+		let domDiv = document.createElement("div")
+		domDiv.style.cssText = `
+				width: 196px;
+				height: 179px;
+				text-align: center;
+				padding: 0 16px;
+				border-right: 1px dashed #eee;
+				float: left;`;
+		let aDiv = document.createElement("a");
+		aDiv.style.cssText = `
+				color: #ff1827;
+				font-size: 24px;`;
+		aDiv.href = "#";
+		domDiv.appendChild(aDiv);
+		let imgDom = document.createElement("img");
+		imgDom.style.cssText =`
+				display: block;
+				margin:0 auto;
+				width: 120px;
+				height: 120px;`;
+		imgDom.src = `indexImg/shopping_${i+1}.webp`;
+		aDiv.appendChild(imgDom);
+		let spanDom = document.createElement("span");
+		spanDom.innerHTML = "￥";
+		spanDom.style.float = "left";
+		aDiv.appendChild(spanDom);
+		let iDom = document.createElement("i");
+		iDom.style.cssText = `
+				font-style: normal;
+				float: left;`;
+		iDom.innerHTML = "23.00";
+		aDiv.appendChild(iDom);
+		let eDom = document.createElement("e");
+		eDom.style.cssText = `
+				color: #999999;
+				margin-top: 12px;
+				float: left;
+				font-size: 12px;
+				padding-left: 2px;
+				text-decoration: line-through;`;
+		eDom.innerHTML = "￥69.9";
+		aDiv.appendChild(eDom);
+		let pDom = document.createElement("p");
+		pDom.style.cssText = `
+				width: 196px;
+				height: 22px;
+				overflow:hidden;
+				color: #5e5e5e;
+				font-size: 14px;
+				line-height: 22px;
+				text-align:left;`;
+		pDom.innerHTML = pMovearr[i];
+		aDiv.appendChild(pDom);
+		$name("#bannerBottom").appendChild(domDiv);
+		domDivBann.push(domDiv);
 	}
-	for(let i=6;i<9;i++){
-		this.parentNode.children[i].style.display= "block";
+	domDivBann[3].style.borderRight = "none";
+	// 动态创建商品  结束
+	// 点击按钮切换商品
+	$name("#btnA_sapn2").onclick = function(){
+		for(let i=2;i<6;i++){
+			this.parentNode.children[i].style.display= "none";
+		}
+		for(let i=6;i<9;i++){
+			this.parentNode.children[i].style.display= "block";
+		}
+	}
+	$name("#btnA_sapn1").onclick = function(){
+		for(let i=6;i<9;i++){
+			this.parentNode.children[i].style.display= "none";
+		}
+		for(let i=2;i<6;i++){
+			this.parentNode.children[i].style.display= "block";
+		}
+	}
+	// 划过出现按钮
+	$name("#everyBanner").onmouseover = function(){
+		$name("#btnA_sapn1").style.display = "block";
+		$name("#btnA_sapn2").style.display = "block";
+	}
+	$name("#everyBanner").onmouseout = function(){
+		$name("#btnA_sapn1").style.display = "none";
+		$name("#btnA_sapn2").style.display = "none";
 	}
 }
-$name("#btnA_sapn1").onclick = function(){
-	for(let i=6;i<9;i++){
-		this.parentNode.children[i].style.display= "none";
-	}
-	for(let i=2;i<6;i++){
-		this.parentNode.children[i].style.display= "block";
-	}
-}
-// 划过出现按钮
-$name("#everyBanner").onmouseover = function(){
-	$name("#btnA_sapn1").style.display = "block";
-	$name("#btnA_sapn2").style.display = "block";
-}
-$name("#everyBanner").onmouseout = function(){
-	$name("#btnA_sapn1").style.display = "none";
-	$name("#btnA_sapn2").style.display = "none";
-}
-
 // 动态创建猜你喜欢的商品
-let aDivArrs = [];
-let imgDivArrs = [
-				"banner_shouji_big_1.webp",
-				"banner_shouji_big_2.webp",
-				"banner_shouji_big_3.webp",
-				"banner_shouji_big_4.webp",
-				"banner_shouji_big_5.webp",
-				"banner_shouji_big_6.webp",
-				"banner_shouji_big_7.webp",
-				"banner_shouji_big_8.webp",
-				"banner_shouji_big_9.webp",
-				"banner_shouji_big_10.webp",];
-for(let i=0;i<5;i++){
-	let aDiv = document.createElement("a");
-	aDiv.style.cssText = `
-			display: inline-block;
-			// width: 210px;
-			// height: 210px;
-			text-align: center;
-			border-right: 1px solid #eee;
-			padding-left: 20px;
-			margin-bottom: 17px;`;
-	aDivArrs.push(aDiv);
-	let imgDom = document.createElement("img");
-	imgDom.style.cssText =`
-			display: block;
-			margin:0 auto;
-			width: 120px;
-			height: 120px;`;
-	imgDom.src = `indexImg/shopping_${i+1}.webp`;
-	imgDivArrs.push(imgDom);
-	aDiv.appendChild(imgDom);
-	let p1Dom = document.createElement("p");
-	p1Dom.style.cssText =`
-			width: 190px;
-			height: 38px;
-			overflow: hidden;
-			font-size: 12px;
-			color: #5e5e5e;
-			line-height: 18px;
-			text-align: left;
-			margin-top: 32px;`;
-	p1Dom.innerHTML = pMovearr[i];
-	aDiv.appendChild(p1Dom);
-	let p2Dom = document.createElement("p");
-	p2Dom.style.cssText =`
-			width: 220px;
-			height: 22px;
-			overflow: hidden;
-			font-size: 16px;
-			color: #ff0027;
-			text-align: left;`;
-	p2Dom.innerHTML = "￥33.80";
-	aDiv.appendChild(p2Dom);
-	$name("#likeShopping").appendChild(aDiv);
+function youLikeShopping(){
+	let aDivArrs = [];
+	let imgDivArrs = [
+					"banner_shouji_big_1.webp",
+					"banner_shouji_big_2.webp",
+					"banner_shouji_big_3.webp",
+					"banner_shouji_big_4.webp",
+					"banner_shouji_big_5.webp",
+					"banner_shouji_big_6.webp",
+					"banner_shouji_big_7.webp",
+					"banner_shouji_big_8.webp",
+					"banner_shouji_big_9.webp",
+					"banner_shouji_big_10.webp",];
+	for(let i=0;i<5;i++){
+		let aDiv = document.createElement("a");
+		aDiv.style.cssText = `
+				display: inline-block;
+				// width: 210px;
+				// height: 210px;
+				text-align: center;
+				border-right: 1px solid #eee;
+				padding-left: 20px;
+				margin-bottom: 17px;`;
+		aDivArrs.push(aDiv);
+		let imgDom = document.createElement("img");
+		imgDom.style.cssText =`
+				display: block;
+				margin:0 auto;
+				width: 120px;
+				height: 120px;`;
+		imgDom.src = `indexImg/shopping_${i+1}.webp`;
+		imgDivArrs.push(imgDom);
+		aDiv.appendChild(imgDom);
+		let p1Dom = document.createElement("p");
+		p1Dom.style.cssText =`
+				width: 190px;
+				height: 38px;
+				overflow: hidden;
+				font-size: 12px;
+				color: #5e5e5e;
+				line-height: 18px;
+				text-align: left;
+				margin-top: 32px;`;
+		p1Dom.innerHTML = pMovearr[i];
+		aDiv.appendChild(p1Dom);
+		let p2Dom = document.createElement("p");
+		p2Dom.style.cssText =`
+				width: 220px;
+				height: 22px;
+				overflow: hidden;
+				font-size: 16px;
+				color: #ff0027;
+				text-align: left;`;
+		p2Dom.innerHTML = "￥33.80";
+		aDiv.appendChild(p2Dom);
+		$name("#likeShopping").appendChild(aDiv);
+	}
+	aDivArrs[4].style.border = "none";
 }
-aDivArrs[4].style.border = "none";
-
 // 点击左右按钮切换商品   猜你喜欢的按钮
 function likeBtn(){
 	let aLikeBtnBoxs = $name("#aLikeBtnBox").children;
@@ -870,8 +964,8 @@ function createBuy(domObj){
 }
 
 // 动态创建优质大牌的商品
-// let aDivArrs = [];
-// let imgDivArrs = [];
+let aDivArrs = [];
+let imgDivArrs = [];
 function goodShopping(domObj){
 	for(let i=0;i<10;i++){
 		let aDiv = document.createElement("a");
@@ -974,150 +1068,142 @@ function ulTopTab1(){
 
 	}
 }
+function storeySkip(){
+	// 楼层
+	let liDoms = $name("#liftDom").firstElementChild.children;
 
-
-
-
-
-
-
-
-// 楼层
-let liDoms = $name("#liftDom").firstElementChild.children;
-
-window.onscroll = function(){
-	let scrollTop1 = document.body.scrollTop || document.documentElement.scrollTop;
-	console.log(scrollTop1);
-	// 侧边栏的回到顶部的出现
-	if (scrollTop1>100) {
-		$("#asideTopGo").css('display','block');
-	}else{
-		$("#asideTopGo").css('display','none');
-	}
-	// 楼层的出现
-	if (scrollTop1 <1900) {
-		$name("#liftDom").style.display = "none";
-		$name("#topFloat1").style.display = "none";
-	} 
-	if(scrollTop1 >=1900){
-		$name("#liftDom").style.display = "block";
-		$name("#topFloat1").style.display = "block";
-		if (scrollTop1>=6500) {
+	window.onscroll = function(){
+		let scrollTop1 = document.body.scrollTop || document.documentElement.scrollTop;
+		console.log(scrollTop1);
+		// 侧边栏的回到顶部的出现
+		if (scrollTop1>100) {
+			$("#asideTopGo").css('display','block');
+		}else{
+			$("#asideTopGo").css('display','none');
+		}
+		// 楼层的出现
+		if (scrollTop1 <1900) {
 			$name("#liftDom").style.display = "none";
-		}
+			$name("#topFloat1").style.display = "none";
+		} 
+		if(scrollTop1 >=1900){
+			$name("#liftDom").style.display = "block";
+			$name("#topFloat1").style.display = "block";
+			if (scrollTop1>=6500) {
+				$name("#liftDom").style.display = "none";
+			}
 
-		// 楼层的红色小三角
-		if (scrollTop1>=1900 && scrollTop1 < 2900) { //一楼
-			$name("#redMoveSpan").style.top = "30px";
-			liDoms[1].style.color = "#f5004b";
-			liDoms[2].style.color = "#000";
-		}
-		if (scrollTop1>=2900 && scrollTop1 < 3900) { //二楼
-			$name("#redMoveSpan").style.top = "76px";
-			liDoms[2].style.color = "#f5004b";
-			liDoms[1].style.color = "#000";
-			liDoms[3].style.color = "#000";
-		}
-		if (scrollTop1>=3554 && scrollTop1 < 4300) { //三楼
-			$name("#redMoveSpan").style.top = "122px";
-			liDoms[3].style.color = "#f5004b";
-			liDoms[2].style.color = "#000";
-			liDoms[4].style.color = "#000";
-		}
-		if (scrollTop1>=4300 && scrollTop1 < 4950) { //四楼
-			$name("#redMoveSpan").style.top = "170px";
-			liDoms[4].style.color = "#f5004b";
-			liDoms[3].style.color = "#000";
-			liDoms[5].style.color = "#000";
-		}
-		if (scrollTop1>=4950 && scrollTop1 < 5400) { //五楼
-			$name("#redMoveSpan").style.top = "218px";
-			liDoms[5].style.color = "#f5004b";
-			liDoms[4].style.color = "#000";
-			liDoms[6].style.color = "#000";
-		}
-		if (scrollTop1>=5400 && scrollTop1 < 6200) { //六楼
-			$name("#redMoveSpan").style.top = "264px";
-			liDoms[6].style.color = "#f5004b";
-			liDoms[7].style.color = "#000";
-			liDoms[5].style.color = "#000";
-		}
-		if (scrollTop1>=6200 && scrollTop1 < 6500) { //七楼
-			$name("#redMoveSpan").style.top = "312px";
-			liDoms[7].style.color = "#f5004b";
-			liDoms[6].style.color = "#000";
-		}
-	}	
+			// 楼层的红色小三角
+			if (scrollTop1>=1900 && scrollTop1 < 2900) { //一楼
+				$name("#redMoveSpan").style.top = "30px";
+				liDoms[1].style.color = "#f5004b";
+				liDoms[2].style.color = "#000";
+			}
+			if (scrollTop1>=2900 && scrollTop1 < 3900) { //二楼
+				$name("#redMoveSpan").style.top = "76px";
+				liDoms[2].style.color = "#f5004b";
+				liDoms[1].style.color = "#000";
+				liDoms[3].style.color = "#000";
+			}
+			if (scrollTop1>=3554 && scrollTop1 < 4300) { //三楼
+				$name("#redMoveSpan").style.top = "122px";
+				liDoms[3].style.color = "#f5004b";
+				liDoms[2].style.color = "#000";
+				liDoms[4].style.color = "#000";
+			}
+			if (scrollTop1>=4300 && scrollTop1 < 4950) { //四楼
+				$name("#redMoveSpan").style.top = "170px";
+				liDoms[4].style.color = "#f5004b";
+				liDoms[3].style.color = "#000";
+				liDoms[5].style.color = "#000";
+			}
+			if (scrollTop1>=4950 && scrollTop1 < 5400) { //五楼
+				$name("#redMoveSpan").style.top = "218px";
+				liDoms[5].style.color = "#f5004b";
+				liDoms[4].style.color = "#000";
+				liDoms[6].style.color = "#000";
+			}
+			if (scrollTop1>=5400 && scrollTop1 < 6200) { //六楼
+				$name("#redMoveSpan").style.top = "264px";
+				liDoms[6].style.color = "#f5004b";
+				liDoms[7].style.color = "#000";
+				liDoms[5].style.color = "#000";
+			}
+			if (scrollTop1>=6200 && scrollTop1 < 6500) { //七楼
+				$name("#redMoveSpan").style.top = "312px";
+				liDoms[7].style.color = "#f5004b";
+				liDoms[6].style.color = "#000";
+			}
+		}	
 
 
-	// let divDomTop = document.createElement("div");
-	// divDomTop.style.cssText = `
-	// 		width:100%;
-	// 		height:50px;
-	// 		background-color:#fff;
-	// 		opacity:.9;
-	// 		position:fixed;
-	// 		top:0px;
-	// 		left:0px;
-	// 		z-index:99;`; 
-	// document.body.appendChild(divDomTop);
+		// let divDomTop = document.createElement("div");
+		// divDomTop.style.cssText = `
+		// 		width:100%;
+		// 		height:50px;
+		// 		background-color:#fff;
+		// 		opacity:.9;
+		// 		position:fixed;
+		// 		top:0px;
+		// 		left:0px;
+		// 		z-index:99;`; 
+		// document.body.appendChild(divDomTop);
 
-	// 顶部悬浮的出现与消失
-	if (scrollTop1 >2000) {
-		$name("#input_top_x").style.position = "fixed";
-		$name("#input_top_x").style.top = "-20px";
-		$name("#input_top_x").style.left = "25%";
-		$name("#input_top_x").style.zIndex = "101";
-		$name("#inputBottomUl").style.display = "none";
-		
+		// 顶部悬浮的出现与消失
+		if (scrollTop1 >2000) {
+			$name("#input_top_x").style.position = "fixed";
+			$name("#input_top_x").style.top = "-20px";
+			$name("#input_top_x").style.left = "25%";
+			$name("#input_top_x").style.zIndex = "101";
+			$name("#inputBottomUl").style.display = "none";
+			
 
+		}
+		if (scrollTop1 <=2000) {
+			$name("#input_top_x").style.position = "";
+			$name("#inputBottomUl").style.display = "block";
+			$name("#input_top_x").style.top = "";
+			$name("#input_top_x").style.left = "";
+		}
 	}
-	if (scrollTop1 <=2000) {
-		$name("#input_top_x").style.position = "";
-		$name("#inputBottomUl").style.display = "block";
-		$name("#input_top_x").style.top = "";
-		$name("#input_top_x").style.left = "";
-	}
-}
-// 楼层的跳转
-liDoms[1].onclick=function(){ 
-	$("html,body").animate({scrollTop:1900},300); /* 持续时间为 300ms */
-	// return false;
-};
-liDoms[2].onclick=function(){ 
-	$("html,body").animate({scrollTop:2900},300); 
-	return false;
-};
-liDoms[3].onclick=function(){ 
-	$("html,body").animate({scrollTop:3653},300); 
-	return false;
-};
-liDoms[4].onclick=function(){ 
-	$("html,body").animate({scrollTop:4300},300); 
-	return false;
-};
-liDoms[5].onclick=function(){ 
-	$("html,body").animate({scrollTop:5050},300); 
-	return false;
-};
-liDoms[6].onclick=function(){ 
-	$("html,body").animate({scrollTop:5400},300); 
-	return false;
-};
-liDoms[7].onclick=function(){ 
-	$("html,body").animate({scrollTop:6260},300); 
-	return false;
-};
-liDoms[8].onclick=function(){ 
-	$("html,body").animate({scrollTop:0},300); 
-	return false;
-};
-liDoms[9].onclick=function(){ 
-	$("html,body").animate({scrollTop:6956},300); 
-	return false;
-};
-
-	
+	// 楼层的跳转
+	liDoms[1].onclick=function(){ 
+		$("html,body").animate({scrollTop:1900},300); /* 持续时间为 300ms */
+		// return false;
+	};
+	liDoms[2].onclick=function(){ 
+		$("html,body").animate({scrollTop:2900},300); 
+		return false;
+	};
+	liDoms[3].onclick=function(){ 
+		$("html,body").animate({scrollTop:3653},300); 
+		return false;
+	};
+	liDoms[4].onclick=function(){ 
+		$("html,body").animate({scrollTop:4300},300); 
+		return false;
+	};
+	liDoms[5].onclick=function(){ 
+		$("html,body").animate({scrollTop:5050},300); 
+		return false;
+	};
+	liDoms[6].onclick=function(){ 
+		$("html,body").animate({scrollTop:5400},300); 
+		return false;
+	};
+	liDoms[7].onclick=function(){ 
+		$("html,body").animate({scrollTop:6260},300); 
+		return false;
+	};
+	liDoms[8].onclick=function(){ 
+		$("html,body").animate({scrollTop:0},300); 
+		return false;
+	};
+	liDoms[9].onclick=function(){ 
+		$("html,body").animate({scrollTop:6956},300); 
+		return false;
+	};
+}	
 
 // <button onclick="toTop(outer)"></button>
 //     <script>
@@ -1136,13 +1222,30 @@ liDoms[9].onclick=function(){
 // for (let i = 0; i<233; i++){
 // 	inner.innerText += `第${i}行\n`;
 // } 
-
-
+function cookieSkip(){
+	let username = getCookie("username");
+	if(username){
+		// alert("欢迎你！"+username);
+		$name("#guoMeiUser").innerHTML = "hi,"+username;
+		$name("#userId").innerHTML = username;
+		$name("#ul_id_one").style.display = "none";
+		$name("#ul_id_two").style.display = "block";
+	}else{
+		$name("#ul_id_two").style.display = "none";
+		$name("#ul_id_one").style.display = "block";
+	}
+}
 
 
 window.onload = function(){
+	inputKeyWord();  //输入框的关键字
+	inputFocus();   //输入框获得焦点清空placeholder
+	inputLeft();    //input框左边的
+	topActivity();  //头部的活动  抽奖 
+	wholeHover();   //全部商品的ul的划过
 	autoBanUl();    //
-
+	phoneCost();   //划过话费的li  下拉框向上移动出现
+	storeySkip();   //楼层跳转
 	new BannerPlayer({
 		width:750,
 		height:450,
@@ -1161,7 +1264,8 @@ window.onload = function(){
 
 	renderTime();  //创建倒计时的盒子
 	timeCount();  //倒计时函数
-
+	createShopping();  //创建商品
+	youLikeShopping();  //创建你喜欢的商品
 	likeBtn();   //猜你喜欢的按钮
 
 	createBuy($name("#buyBox"));  //创建必买清单
@@ -1268,6 +1372,9 @@ window.onload = function(){
 
 
 	asideFun();//侧边栏划过出现函数
+
+	// 获取cookie
+	cookieSkip();
 }
 
 

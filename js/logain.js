@@ -23,6 +23,9 @@ function focusFn(){
 						if ($("#checkId").attr('checked')) {
 							saveCookie("username",$("#username").val(),7);
 							saveCookie("userpass",$("#password").val(),7);
+						}else{
+							saveCookie("username",$("#username").val());
+							saveCookie("userpass",$("#password").val());
 						}
 						window.location.href = "index.html";
 					}else{
