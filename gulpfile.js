@@ -28,13 +28,13 @@ gulp.task("copyall",async ()=>{
     .pipe(gulp.dest("D:\\phpStudy\\WWW\\guomei\\logainImg"));
     gulp.src("shoppingCarImg/*.{jpg,png,gif,webp,jpeg,ico}")
     .pipe(gulp.dest("D:\\phpStudy\\WWW\\guomei\\shoppingCarImg"));
+	
 
-
-    gulp.src('sass/**/*', async ()=>{
-		gulp.src('sass/**/*')
-		.pipe(sass())//把sass里的东西经过编译放到css中
-		.pipe(gulp.dest('D:\\phpStudy\\WWW\\guomei\\css'));
-	});
+    // gulp.src('sass/**/*', async ()=>{
+	// 	gulp.src('sass/**/*')
+	// 	.pipe(sass())//把sass里的东西经过编译放到css中
+	// 	.pipe(gulp.dest('D:\\phpStudy\\WWW\\guomei\\css'));
+	// });
     
 });
 gulp.task("watchall",async ()=>{
@@ -82,9 +82,30 @@ gulp.task("watchall",async ()=>{
     })
 
 
-    gulp.watch('sass/*.scss', async ()=>{
-		gulp.src('sass/*.scss')
-		.pipe(sass())//把sass里的东西经过编译放到css中
-		.pipe(gulp.dest('D:\\phpStudy\\WWW\\guomei\\css'));
-	});
+    // gulp.watch('sass/*.scss', async ()=>{
+	// 	gulp.src('sass/*.scss')
+	// 	.pipe(sass())//把sass里的东西经过编译放到css中
+	// 	.pipe(gulp.dest('D:\\phpStudy\\WWW\\guomei\\css'));
+	// });
+
+
+// sass使用：
+// 连接
+//  sass shopCar.scss:../css/shopCar.css
+
+// 监听
+// sass --watch .:../css
+
+// 压缩格式——常用——用于在线项目的小文件
+// sass --watch .:../css --style compressed
+
+// 扩展格式——常用——规范的 CSS 代码格式
+// sass --watch .:../css --style expanded
+
+// 紧凑格式——常用
+// sass --watch .:../css --style compact
+
+// 嵌套格式——不常用
+// sass --watch .:../css --style nested
+
 });

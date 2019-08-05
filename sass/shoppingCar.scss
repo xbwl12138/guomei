@@ -65,7 +65,7 @@ header{
 	background-color: #f8f8f8;
 }
 .top_logain_box{
-	width: 1200px;
+	width: 990px;
 	height: 30px;
 	padding-top: 1px;
 	margin: 0 auto;
@@ -708,7 +708,7 @@ header{
 	width:100%;
 }
 .log_box{
-	width:1200px;
+	width:990px;
 	height: 120px;
 	margin:0 auto;
 	margin-top: 1px;
@@ -730,14 +730,75 @@ header{
 .addres{
 	width:100%;
 	.addres_box{
-		width: 1200px;
-		height: 200px;
-		background: red;
+		width: 990px;
+		height: 30px;
 		margin:0 auto;
-
+		// background: black;
+	}
+}
+.shoppingCar{
+	width:100%;
+	.shopping_car_box{
+		width:990px;
+		margin:0 auto;
+		.shopping_car_tit{
+			width: 968px;
+			height: 44px;
+			line-height: 44px;
+			background: #eee;
+			border: 1px solid #e6e6e6;
+			border-radius: 3px;
+			padding:0 10px;
+			margin-bottom: 10px;
+			ul{
+				li{
+					float: left;
+					height: 44px;
+					font:12px/1.5 arial,"\65b0\5b8b\4f53";
+					color: #333;
+					line-height: 44px;
+				}
+				li:nth-child(1){
+					padding-top: 3px;
+					input{
+						width: 16px;
+						height: 16px;
+						background: #fff;
+						font:12px/1.5 arial,"\65b0\5b8b\4f53";
+					}
+				}
+				li:nth-child(2){
+					margin-left: 10px;
+					margin-right: 100px;
+				}
+				li:nth-child(3){
+					margin-left: 10px;
+					margin-right: 270px;
+				}
+				li:nth-child(4){
+					margin-right: 120px;
+				}
+				li:nth-child(5){
+					margin-right: 120px;
+				}
+				li:nth-child(6){
+					margin-right: 120px;
+				}
+			}
+		}
 	}
 }
 
+// 结算
+.settlement{
+	width:100%;
+	background: #f3f3f3;
+		.settlement_box{
+		width: 990px;
+		height:60px;
+		margin:10px auto 0;
+	}
+}
 
 
 
