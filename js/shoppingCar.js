@@ -14,38 +14,57 @@ window.onload = function(){
 
 // 全选框
 function allCheckbox(){
-    let shoppingCheckedDom = $(".shopping_checked");
-    // 上面的全选
-    $("#allCheckboxId")[0].oninput = function(){
-        for(let i=0;i<3;i++){
-            if($("#allCheckboxId")[0].checked == true){
-                $("#checkBoxDomBotId")[0].checked = true;
-                shoppingCheckedDom[i].checked = true;
-            }else{
-                $("#checkBoxDomBotId")[0].checked = false;
-                shoppingCheckedDom[i].checked = false;
-            }
-        }
-    }
-    // 下面的全选
-    $("#checkBoxDomBotId")[0].oninput = function(){
-        for(let i=0;i<3;i++){
-            if($("#checkBoxDomBotId")[0].checked == true){
-                $("#allCheckboxId")[0].checked = true;
-                shoppingCheckedDom[i].checked = true;
-            }else{
-                $("#allCheckboxId")[0].checked = false;
-                shoppingCheckedDom[i].checked = false;
-            }
-        }
+  
+    // let shoppingCheckedDom = $(".shopping_checked"); 
+    // let vss = 
+    for(let i=0;i<date.length;i++){
+        $(function(){
+            $("#allCheckboxId").checkBind($(".shopping_checked"),);
+            $("#checkBoxDomBotId").checkBind($(".shopping_checked"),);
+        });
     }
 
-    
+    $("#minSpanId").onclick = function(){
+        let danjia = parseFloat($("#spanDomId")[0].innerHTML);
+        let shuliang = parseFloat($("#inputBtnId")[0].value);
+        $("#subtotalSpanDomId2")[0].innerHTML = danjia*shuliang;
+    }
+
+
 }
+
+
+
+
+
+let date = [
+    {
+    'goodsId':'01001',
+    'goodsName':'iphone XS Max' ,
+    'goodsType':'手机',
+    'goodsPrice':'8488' ,
+    'goodsCount':'2',
+    'goodsDesc':'' ,'goodsImg':'','beiyong1':'金色' ,'beiyong2':'全网通256G','beiyong3':'' ,'beiyong4':'','beiyong5':'' ,'beiyong6':'','beiyong7':'' ,'beiyong8':'','beiyong9':'' ,'beiyong10':'','beiyong11':'' ,'beiyong12':'','beiyong13':'' }
+    ,
+    { 'goodsId':'01002',
+    'goodsName':'华为P30' ,
+    'goodsType':'手机',
+    'goodsPrice':'3000' ,
+    'goodsCount':'1',
+    'goodsDesc':'' ,'goodsImg':'','beiyong1':'魅惑蓝' ,'beiyong2':'4+64G','beiyong3':'' ,'beiyong4':'','beiyong5':'' ,'beiyong6':'','beiyong7':'' ,'beiyong8':'','beiyong9':'' ,'beiyong10':'','beiyong11':'' ,'beiyong12':'','beiyong13':'' }
+    ,
+    { 'goodsId':'01003',
+    'goodsName':'ipadPro' ,
+    'goodsType':'平板',
+    'goodsPrice':'5000' ,
+    'goodsCount':'2',
+    'goodsDesc':'' ,'goodsImg':'','beiyong1':'白色' ,'beiyong2':'8G大容量','beiyong3':'' ,'beiyong4':'','beiyong5':'' ,'beiyong6':'','beiyong7':'' ,'beiyong8':'','beiyong9':'' ,'beiyong10':'','beiyong11':'' ,'beiyong12':'','beiyong13':'' }
+    
+];
 
 // 动态创建购物车商品
 function createShoppingCar(){
-    for(let i=0;i<3;i++){
+    for(let i=0;i<date.length;i++){
         let shoppingDom = document.createElement("div");
         shoppingDom.style.cssText = `
             width:968px;
@@ -111,15 +130,15 @@ function createShoppingCar(){
             height:34px;
             font:12px/1.5 arial;
             color:#333;`;
-        pDom.innerHTML = "Apple iPhone XS Max 256G 金色 移动联通电信4G手机";
+        pDom.innerHTML = date[i].goodsName;
         apDom.appendChild(pDom);
-        // p的动画
-        // pDom[0].hover(function () {
-        //         $(this).css(color,"red");
-        //     }, function () {
-        //         $(this).css(color,"#eee");
-        //     }
-        // );
+        // p的动画(商品名称划过)
+        pDom.onmouseover = function(){
+            this.style.color = "red";
+        }
+        pDom.onmouseout = function(){
+            this.style.color = "rgb(51, 51, 51)";
+        }
         
         let aSevenDom = document.createElement("a");
         aSevenDom.href = "#";
@@ -163,6 +182,13 @@ function createShoppingCar(){
             float:left;
             margin-left:4px;`;
         iDom2.innerHTML = "选购增值服务";
+        // (选购增值服务划过)
+        iDom2.onmouseover = function(){
+            this.style.color = "red";
+        }
+        iDom2.onmouseout = function(){
+            this.style.color = "rgb(51, 51, 51)";
+        }
         aValueDom.appendChild(iDom2);
         let iDom3 = document.createElement("i");
         iDom3.style.cssText = `
@@ -187,13 +213,13 @@ function createShoppingCar(){
         pColorDom.style.cssText = `
             width:120px;
             height:16px;`;
-        pColorDom.innerHTML = "颜色 ：金色";
+        pColorDom.innerHTML = "颜色 ："+date[i].beiyong1;
         liDoms[3].appendChild(pColorDom);
         let pvDom = document.createElement("p");
         pvDom.style.cssText = `
             width:120px;
             height:16px;`;
-        pvDom.innerHTML = "版本 ：全网通256G";
+        pvDom.innerHTML = "版本 ："+date[i].beiyong2;
         liDoms[3].appendChild(pvDom);
 
         // 单价
@@ -209,7 +235,8 @@ function createShoppingCar(){
         spanDom1.innerHTML = "￥";
         liDoms[4].appendChild(spanDom1);
         let spanDom2 = document.createElement("span");
-        spanDom2.innerHTML = "8488.00";
+        spanDom2.innerHTML = date[i].goodsPrice+".00";
+        spanDom2.setAttribute("id","spanDomId");
         liDoms[4].appendChild(spanDom2);
 
         // 数量
@@ -235,10 +262,21 @@ function createShoppingCar(){
             line-height:22px;
             font-size:16px;`;
         minSpan.innerHTML = "-";
+        // 减法的函数
+        minSpan.onclick = function(){
+            let num = parseInt($(this).next().val());
+            num--;
+            if(num <= 1){
+                num = 1;
+            }
+            $(this).next().val(num);
+        }
+        minSpan.setAttribute("id","minSpanId");
         liDoms[5].appendChild(minSpan);
         let inputBtn = document.createElement("input");
         inputBtn.type = "text";
-        inputBtn.value = "1";
+        inputBtn.value = date[i].goodsCount;
+        inputBtn.setAttribute("id","inputBtnId");
         inputBtn.style.cssText = `
             width:44px;
             height:22px;
@@ -249,7 +287,22 @@ function createShoppingCar(){
             float:left;
             text-align:center;
             font-size:14px;`;
-        inputBtn.innerHTML = "-";
+        // input框只能是数字
+        inputBtn.oninput = function(event){
+            let evt = event || window.event;
+            // let keyCode = evt.keyCode;
+
+            // if(keyCode>=48&&keyCode<=47&&keyCode>=96&&keyCode<=105){
+                
+            // }else{
+            //     this.value = "";
+            // }
+            let num1=inputBtn.value;
+            
+            if((typeof num1) != number){
+                this,value = "";
+            }
+        }
         liDoms[5].appendChild(inputBtn);
         let addSpan = document.createElement("span");
         addSpan.style.cssText = `
@@ -265,6 +318,15 @@ function createShoppingCar(){
             line-height:23px;
             font-size:16px;`;
         addSpan.innerHTML = "+";
+        // 加法的函数
+        addSpan.onclick = function(){
+            let num = parseInt($(this).prev().val());
+            num++;
+            // if(num <= 1){
+            //     num = 1;
+            // }
+            $(this).prev().val(num);
+        }
         liDoms[5].appendChild(addSpan);
 
         // 小计
@@ -282,7 +344,10 @@ function createShoppingCar(){
         subtotalSpanDom1.innerHTML = "￥";
         liDoms[6].appendChild(subtotalSpanDom1);
         let subtotalSpanDom2= document.createElement("span");
-        subtotalSpanDom2.innerHTML = "8488.00";
+        // 计算小计的价格
+        let numContent = parseFloat(parseFloat(inputBtn.value)*parseFloat(spanDom2.innerHTML));
+        subtotalSpanDom2.innerHTML = numContent;
+        subtotalSpanDom2.setAttribute("id","subtotalSpanDomId2");
         liDoms[6].appendChild(subtotalSpanDom2);
         // 操作
         liDoms[7].style.cssText = `
@@ -299,13 +364,34 @@ function createShoppingCar(){
             cursor:pointer;
             text-align:left;`;
         deletePDom.innerHTML  = "删除";
+        //（删除的划过）
+        deletePDom.onmouseover = function(){
+            this.style.color = "red";
+        }
+        deletePDom.onmouseout = function(){
+            this.style.color = "rgb(51, 51, 51)";
+        }
+        // 删除商品
+        deletePDom.onclick = function(){
+           let result = confirm("你真的要删除此商品吗?");
+           if(result == true){
+            this.parentNode.parentNode.parentNode.remove();
+           }
+        }
         liDoms[7].appendChild(deletePDom);
         let CollectionPDom = document.createElement("p");
         CollectionPDom.style.cssText = `
             cursor:pointer;
             text-align:left;`;
         CollectionPDom.innerHTML  = "移入收藏夹";
-    liDoms[7].appendChild(CollectionPDom);
+        liDoms[7].appendChild(CollectionPDom);
+        //（移入收藏夹的划过）
+        CollectionPDom.onmouseover = function(){
+            this.style.color = "red";
+        }
+        CollectionPDom.onmouseout = function(){
+            this.style.color = "rgb(51, 51, 51)";
+        }
     }
 }
 
