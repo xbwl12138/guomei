@@ -702,3 +702,108 @@ header{
 	background-position: 0px -799px;
 	margin: 20px auto 0;
 }
+//  -------以上为复用-------
+.top-logo_suoyou{
+	.logo_banner{
+		a{
+
+		background: url(../shoppingImg/logo_right.gif)
+		}
+	}
+}
+.top-logo_suoyou{
+	.top_input_box_sho{
+		width:700px;
+		margin-left:60px;
+		form:nth-child(2){
+			input{
+				width:300px;
+			}
+		}
+		input:nth-child(3){
+			font-size: 18px;
+			font-weight: 600;
+		}
+		input:nth-child(4){
+			width:89px;
+			height:32px;
+			float: left;
+			background: black;
+			font-size: 18px;
+			font-weight: 600;
+			margin-left:2px;
+			cursor: pointer;
+			
+		}
+		.a_maiKeFeng_bg{
+			left:340px;
+		}
+	}
+	.top_shopping_car{
+		margin-left: 20px;
+	}
+}
+
+/*店铺名
+store*/
+.store{
+	width:100%;
+	.store_box{
+		width: 1200px;
+		height:120px;
+		margin:0 auto;
+		a{	
+			display: inline-block;
+			width:1200px;
+			height:120px;
+			background: url(../shoppingImg/shopping_store.jpg)
+		}
+	}
+}
+/*商品系列
+series*/
+.serise{
+	width:100%;
+	background: #333;
+	.series_box{
+		width: 1200px;
+		height:40px;
+		margin:0 auto;
+		a{	
+			display: inline-block;
+			width:1200px;
+			height:120px;
+		}
+	}
+}
+/*导航条
+shoppingNav*/
+.shoppingNav{
+	width:100%;
+	background: #f6f6f6;
+	.shoppingNav_box{
+		width: 1200px;
+		height:42px;
+		margin:0 auto;
+		line-height: 42px;
+	}
+}
+/*放大镜
+glass*/
+.glass{
+	width:100%;
+	.glass_box{
+		width: 1200px;
+		height:530px;
+		margin:20px auto 0;
+		background: skyblue;
+		line-height: 42px;
+		.jing_box{
+			width:450px;
+			height:450px;
+			// background: red;
+			border:1px solid #aaa;
+		}
+	}
+	
+}

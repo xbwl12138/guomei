@@ -12,22 +12,22 @@ window.onload = function(){
         'goodsId':'01001',
         'goodsName':'iphone XS Max' ,
         'goodsType':'手机',
-        'goodsPrice':'8488' ,
-        'goodsCount':'2',
+        'goodsPrice':'100' ,
+        'goodsCount':'1',
         'goodsDesc':'' ,'goodsImg':'','beiyong1':'金色' ,'beiyong2':'全网通256G','beiyong3':'' ,'beiyong4':'','beiyong5':'' ,'beiyong6':'','beiyong7':'' ,'beiyong8':'','beiyong9':'' ,'beiyong10':'','beiyong11':'' ,'beiyong12':'','beiyong13':'' }
         ,
         { 'goodsId':'01002',
         'goodsName':'华为P30' ,
         'goodsType':'手机',
-        'goodsPrice':'3000' ,
+        'goodsPrice':'200' ,
         'goodsCount':'1',
         'goodsDesc':'' ,'goodsImg':'','beiyong1':'魅惑蓝' ,'beiyong2':'4+64G','beiyong3':'' ,'beiyong4':'','beiyong5':'' ,'beiyong6':'','beiyong7':'' ,'beiyong8':'','beiyong9':'' ,'beiyong10':'','beiyong11':'' ,'beiyong12':'','beiyong13':'' }
         ,
         { 'goodsId':'01003',
         'goodsName':'ipadPro' ,
         'goodsType':'平板',
-        'goodsPrice':'5000' ,
-        'goodsCount':'2',
+        'goodsPrice':'300' ,
+        'goodsCount':'1',
         'goodsDesc':'' ,'goodsImg':'','beiyong1':'白色' ,'beiyong2':'8G大容量','beiyong3':'' ,'beiyong4':'','beiyong5':'' ,'beiyong6':'','beiyong7':'' ,'beiyong8':'','beiyong9':'' ,'beiyong10':'','beiyong11':'' ,'beiyong12':'','beiyong13':'' }
         
     ],$("#allCheckboxId"),);
@@ -35,185 +35,6 @@ window.onload = function(){
 
     // allCheckbox();
 }
-// 动态创建购物车商品
-// function createShoppingCar(){
-//     for(let i=0;i<date.length;i++){
-        
-//     }
-// }
-
-// 创建结算
-// function createSettlement(){
-//     let ulDom = document.createElement("ul");
-//     ulDom.style.cssText = `
-//         width:978px;
-//         height:30px;
-//         padding-top:18px;
-//         padding-left:12px;`;
-//     $(".settlement_box")[0].appendChild(ulDom);
-//     let liDoms = [];
-//     for(let i=0;i<7;i++){
-//         let liDom = document.createElement("li");
-//         liDoms.push(liDom);
-//         ulDom.appendChild(liDom);
-//     }
-//     // input框
-//     liDoms[0].style.cssText = `
-//             width:16px;
-//             height:20px;
-//             float:left;`;
-//     let checkBoxDom = document.createElement("input");
-//     checkBoxDom.setAttribute("id","checkBoxDomBotId");
-//     checkBoxDom.style.cssText = `
-//         width: 18px;
-//         height: 18px;`;
-//     checkBoxDom.type = "checkBox";
-//     liDoms[0].appendChild(checkBoxDom);
-//     // 全选
-//     liDoms[1].style.cssText = `
-//             width:40px;
-//             height:20px;
-//             margin:0 10px;
-//             float:left;
-//             font-size:12px;
-//             line-height:20px;`;
-//     liDoms[1].innerHTML =  "全选";
-//     // 删除
-//     liDoms[2].style.cssText = `
-//             width:40px;
-//             height:20px;
-//             margin:0 10px;
-//             float:left;
-//             font-size:12px;
-//             line-height:20px;`;
-//     let deleteSpanDom = document.createElement("span");
-//     deleteSpanDom.style.cssText  =  `
-//         cursor:pointer;`;
-//     deleteSpanDom.innerHTML = "删除";
-//     liDoms[2].appendChild(deleteSpanDom);
-//     // 已选n件商品
-//     liDoms[3].style.cssText = `
-//             width:120px;
-//             height:40px;
-//             margin:0 10px;
-//             float:left;
-//             font-size:12px;
-//             margin-left:300px;
-//             line-height:20px;`;
-//     let aleadeyPDom = document.createElement("p");
-//     aleadeyPDom.style.cssText  =  `
-//         height:30px;
-//         font-size:12px;
-//         display:inline-block;
-//         line-height:20px;
-//         float:left;
-//         `;
-//     aleadeyPDom.innerHTML = "已选";
-//     liDoms[3].appendChild(aleadeyPDom);
-//     let nShoppingSpanDom = document.createElement("span");
-//     nShoppingSpanDom.style.cssText =  `
-//         display:inline-block;
-//         height:30px;
-//         color:red;
-//         margin:0 8px;
-//         font-size:16px;
-//         font-weight:700;
-//         float:left;
-//         `;
-//     nShoppingSpanDom.innerHTML = "3";
-//     liDoms[3].appendChild(nShoppingSpanDom);
-//     let shoppingPDom = document.createElement("p");
-//     shoppingPDom.style.cssText = `
-//         width:50px;
-//         height:30px;
-//         font-size:12px;
-//         display:inline-block;
-//         line-height:20px;
-//         float:left;
-//         position:relative`;
-//     shoppingPDom.innerHTML = "件商品";
-//     liDoms[3].appendChild(shoppingPDom);
-//     // 箭头
-//     let arrowIDom = document.createElement("i");
-//     arrowIDom.style.cssText = `
-//         display:inline-block;
-//         width:7px;
-//         height:4px;
-//         background:url(shoppingCarImg/sprite.png) -117px -92px;
-//         position:absolute;
-//         right:2px;
-//         top:9px;`;
-//     shoppingPDom.appendChild(arrowIDom);
-
-//     // 总计（不含运费）
-//     liDoms[4].style.cssText = `
-//             height:20px;
-//             margin:0 10px;
-//             float:left;
-//             font-size:12px;
-//             line-height:20px;`;
-//     let zongSpanDom = document.createElement("span");
-//     zongSpanDom.style.cssText  =  `
-//         cursor:pointer;`;
-//     zongSpanDom.innerHTML = "总计（不含运费）:";
-//     liDoms[4].appendChild(zongSpanDom);
-
-//     liDoms[5].style.cssText = `
-//             // width:80px;
-//             // height:80px;
-//             float:left;
-//             color:#e3101e;
-//             margin-top:-2px;
-//             text-align:center;
-//             font-weight:900;
-//             font-size:18px;`;
-//     let spanDom1 = document.createElement("span");
-//     spanDom1.innerHTML = "￥";
-//     liDoms[5].appendChild(spanDom1);
-//     let spanDom2 = document.createElement("span");
-//     spanDom2.innerHTML = "25464.00";
-//     liDoms[5].appendChild(spanDom2);
-
-//     // 结算
-//     liDoms[6].style.cssText = `
-//         width:100px;
-//         height:32px;
-//         background:#ff5757;
-//         padding:14px;
-//         margin-top:-18px;
-//         float:right;`;
-//     let settlSpanDom = document.createElement("span");
-//     settlSpanDom.style.cssText = `
-//         display:block;
-//         width:64px;
-//         height:30px;
-//         font-family: microsoft YaHei;
-//         font-size: 16px;
-//         font-weight: 700;
-//         // font-indent:12px;
-//         line-height:30px;
-//         position:relative;
-//         color:#fff;
-//         cursor:pointer;
-//         margin-left:18px;`;
-//     settlSpanDom.innerHTML = "去结算";
-//     liDoms[6].appendChild(settlSpanDom);
-
-//     let iDom = document.createElement("i");
-//     iDom.style.cssText = `
-//         display:inline-block;
-//         position:absolute;
-//         top:4px;
-//         right:4px;
-//         width:12px;
-//         height:13px;
-//         margin-top:4px;
-//         background:url(shoppingCarImg/sprite.png) -292px -83px`;;
-//         settlSpanDom.appendChild(iDom);
-
-// }
-
-
 class CreateShopping{
     constructor(domObj,date,checkAllObj){
         this.domObj = domObj; //购物车的盒子
@@ -225,17 +46,23 @@ class CreateShopping{
         this.priceArr = []; //单价
         this.subtotalArr = []; //小计
         this.deleteArr = []; //商品里面的删除
-        this.numPrice = 0; 
-        this.totalizePrice = [];
+        this.numPrice = 0;  
+        this.totalizePrice = []; //总价
         this.ordNum = 0;
+        this.zongMoney = 0; //总数
+        this.zongjiNum = 0; //总计
 
-        this.selectArr = [];
+        this.selectArr = [];  //
         // this.checkBoxDomBotDom = checkBoxDomBotDom; //下面的全部选框
         // let defaultObj ={
         // }
         this.render();
         this.render2();
         this.addEvent();
+        // this.addMinShopping();
+        // this.checkedMOney();
+        // this.countNumMoney();
+        this.deleateShopping();
     }
     render(){
         for(let i=0;i<this.date.length;i++){
@@ -251,7 +78,7 @@ class CreateShopping{
                 width:968px;`;
             shoppingDom.appendChild(ulDom);
             let liDoms = [];
-            for(let i=0;i<9;i++){
+            for(let i=0;i<8;i++){
                 let liDom = document.createElement("li");
                 liDoms.push(liDom);
                 ulDom.appendChild(liDom);
@@ -708,35 +535,38 @@ class CreateShopping{
     }
     addEvent(){
         this.checkBoxEvent();
-        // 数量的加减
+        let money = 0;
+        let count = 0;
         for(let i=0;i<this.date.length;i++){
-            this.addMinShopping();
-            // 删除商品
-            this.deleteArr[i].onclick = ()=>{
-                let result = confirm("你真的要删除此商品吗?");
-                if(result == true){
-                    this.deleteArr[i].parentNode.parentNode.parentNode.remove();
-                    this.checkBoxEvent();
-                }
-            }
             this.checkArr[i].onclick = ()=>{
+                // 获取小计
+                let zongMoney =  parseFloat(this.checkArr[i].parentNode.parentNode.lastElementChild.previousElementSibling.lastElementChild.innerHTML);
 
-                let xiaoji = parseFloat(this.subtotalArr[i].innerHTML);
-                if(this.checkArr[i].checked == true){
-                    this.numPrice = this.numPrice + xiaoji;
-                    // console.log(this.numPrice);
-                    this.totalizePrice[0].innerHTML = this.numPrice;
+                if(this.checkArr[i].checked){
+                    count ++;
+                    this.selectArr[0].innerHTML = count;
+
+                    // console.log(zongMoney);
+                    money = money + zongMoney;
+                    zongMoney = 0;
+                    this.totalizePrice[0].innerHTML = money; //总计
+                }else{
+                    count --;
+                    this.selectArr[0].innerHTML = count;
+
+                    // console.log(zongMoney);
+                    money = money - zongMoney;
+                    zongMoney = 0;
+                    this.totalizePrice[0].innerHTML = money; //总计
                 }
-                
-                if(this.checkArr[i].checked == true){
-                    // let num = 0;
-                    this.ordNum = this.ordNum + 1;
-                    // num = num+1;
-                    this.selectArr[0].innerHTML = this.ordNum;
-                }
-                
-            }
+            } 
         }
+
+        // 下面总数的变化
+
+        this.addMinShopping();
+
+    
     }
     // 全选框
     checkBoxEvent(){
@@ -745,6 +575,8 @@ class CreateShopping{
         $("#checkBoxDomBotId").checkBind($(".shopping_checked"),);
         // 上下两个全选（上）
         this.checkAllObj[0].onclick = ()=>{
+            // 获取小计
+            let num
             if(this.checkAllObj[0].checked == true){
                 $("#checkBoxDomBotId")[0].checked = true;
             }else if(this.checkAllObj[0].checked == false){
@@ -760,12 +592,14 @@ class CreateShopping{
             }
         }
     }
+    
     // 加减商品
     addMinShopping(){
         for(let i=0;i<this.date.length;i++){
-            let xiaoji = parseFloat(this.subtotalArr[i].innerHTML);
-
+            // let xiaoji = parseFloat(this.subtotalArr[i].innerHTML);
+            
             this.minBtnArr[i].onclick = ()=>{
+                // 获取商品数量
                 let textNum = this.minBtnArr[i].nextElementSibling.value;
                 let num = textNum;
                 num--;
@@ -773,32 +607,59 @@ class CreateShopping{
                     num = 1;
                 }
                 this.minBtnArr[i].nextElementSibling.value = num;
-
                 // 小计的变化
+                // 获取单价
                 let price = parseFloat(this.priceArr[i].innerHTML);
-                this.subtotalArr[i].innerHTML = parseInt(num*price);
-
-                this.numPrice = this.numPrice - xiaoji;
-                if(this.numPrice <= 0){
-                    this.numPrice = 0;
+                this.zongMoney = parseInt(num*price);
+                this.subtotalArr[i].innerHTML = this.zongMoney;
+                // 总计
+                if(this.checkArr[i].checked){
+                    this.zongjiNum = this.zongjiNum - this.zongMoney;
+                    this.totalizePrice[0].innerHTML = this.zongjiNum;
+                    console.log(this.zongMoney);
                 }
-                // 逻辑错误
-                this.totalizePrice[0].innerHTML = this.numPrice;
+
+                    // console.log(this.zongMoney);
+
             }
             this.addBtnArr[i].onclick = ()=>{
                 let textNum = this.addBtnArr[i].previousSibling.value;
                 let num = textNum;
                 num++;
                 this.addBtnArr[i].previousSibling.value = num;
+                // 小计的变化
+                // 获取单价
                 let price = parseFloat(this.priceArr[i].innerHTML);
-                this.subtotalArr[i].innerHTML = parseInt(num*price);
-
-                this.numPrice = this.numPrice + xiaoji;
-
-                this.totalizePrice[0].innerHTML = this.numPrice;
+                this.zongMoney = parseInt(num*price);
+                this.subtotalArr[i].innerHTML = this.zongMoney;
+                // 总计
+                if(this.checkArr[i].checked){
+                    this.zongjiNum = this.zongjiNum + this.zongMoney;
+                    this.totalizePrice[0].innerHTML = this.zongjiNum;
+                }
+            }
+        }
+        // this.countNumMoney();
+        // return this.zongMoney;
+    }
+    // 选中十加减的函数
+    // checkedMOney(){
+    //     this.addMinShopping();
+    //     console.log(this.addMinShopping());
+    // }
+    // 删除商品
+    deleateShopping(){
+        for(let i=0;i<this.date.length;i++){
+            this.deleteArr[i].onclick = ()=>{
+                let result = confirm("你真的要删除此商品吗?");
+                if(result == true){
+                    this.deleteArr[i].parentNode.parentNode.parentNode.remove();
+                    this.checkBoxEvent();
+                }
             }
         }
     }
+    
 
 }
 

@@ -374,24 +374,35 @@ function phoneCost(){
 	var myTimeLi;
 	var huaFeiBoxTop = 120;
 	// 点击❌消失
+	
+	$name("#huaFeiLi").onmouseover = function(){
+		$name("#huaFeiBox").style.display = "block";
+		if(myTimeLi){
+			return;
+		}
+		myTimeLi = setInterval(function(){
+			huaFeiBoxTop = huaFeiBoxTop-1;
+			if (huaFeiBoxTop <= 71) {
+				huaFeiBoxTop = 71;
+				window.clearInterval(myTimeLi);
+				myTimeLi = null;
+			}
+			// console.log("进入"+huaFeiBoxTop);
+
+			$name("#huaFeiBox").style.top = huaFeiBoxTop+"px";
+			
+		},1);
+		
+		
+	}
+	
 	$name("#spanBtnCuo").onclick = function(){
 		$name("#huaFeiBox").style.display = "none";
 		huaFeiBoxTop = 120;
+		$name("#huaFeiBox").style.top =  "120px";
+
 	}
-	$name("#huaFeiLi").onmouseover = function(){
-		$name("#huaFeiBox").style.display = "block";
-		myTimeLi = setInterval(function(){
-			huaFeiBoxTop = huaFeiBoxTop-2;
-			if (huaFeiBoxTop <= 72) {
-				huaFeiBoxTop = 72;
-				window.clearInterval(myTimeLi)
-				return;
-			}
-			// console.log(myTimeLi);
-			// console.log(huaFeiBoxTop);
-		},1);
-		$name("#huaFeiBox").style.top = huaFeiBoxTop+"px";
-	}
+	
 
 	$name("#chZhiMon").onclick = function(){
 		$name("#moneyUlYuan").style.display = "block";
