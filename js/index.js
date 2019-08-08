@@ -477,7 +477,7 @@ function timeCount(){
 	    h=date.getHours(),
 	    m=date.getMinutes(),
 	    s=date.getSeconds();
-  	let stopTime=new Date("8 5 2019 00:00:00"),//结束时间
+  	let stopTime=new Date("8 9 2019 00:00:00"),//结束时间
 	    stopH=stopTime.getHours(),
 	    stopM=stopTime.getMinutes(),
 	    stopS=stopTime.getSeconds();
@@ -525,7 +525,7 @@ let pMovearr =[
 			"声波电动牙刷少女粉款2刷头 少女粉",
 			"iphoneXR-128G-黑色"];
 // 动态创建商品  开始
-function createShopping(){
+function createShopping(data){
 	for(let i=0;i<8;i++){
 		let domDiv = document.createElement("div")
 		domDiv.style.cssText = `
@@ -547,7 +547,7 @@ function createShopping(){
 				margin:0 auto;
 				width: 120px;
 				height: 120px;`;
-		imgDom.src = `indexImg/shopping_${i+1}.webp`;
+		imgDom.src = data[i].goodsImg;
 		aDiv.appendChild(imgDom);
 		let spanDom = document.createElement("span");
 		spanDom.innerHTML = "￥";
@@ -557,7 +557,7 @@ function createShopping(){
 		iDom.style.cssText = `
 				font-style: normal;
 				float: left;`;
-		iDom.innerHTML = "23.00";
+		iDom.innerHTML = data[i].goodsPrice+".00";
 		aDiv.appendChild(iDom);
 		let eDom = document.createElement("e");
 		eDom.style.cssText = `
@@ -567,7 +567,7 @@ function createShopping(){
 				font-size: 12px;
 				padding-left: 2px;
 				text-decoration: line-through;`;
-		eDom.innerHTML = "￥69.9";
+		eDom.innerHTML = "￥"+data[i].beiyong13+".00";
 		aDiv.appendChild(eDom);
 		let pDom = document.createElement("p");
 		pDom.style.cssText = `
@@ -578,7 +578,7 @@ function createShopping(){
 				font-size: 14px;
 				line-height: 22px;
 				text-align:left;`;
-		pDom.innerHTML = pMovearr[i];
+		pDom.innerHTML = data[i].goodsDesc;
 		aDiv.appendChild(pDom);
 		$name("#bannerBottom").appendChild(domDiv);
 		domDivBann.push(domDiv);
@@ -613,20 +613,26 @@ function createShopping(){
 	}
 }
 // 动态创建猜你喜欢的商品
-function youLikeShopping(){
-	let aDivArrs = [];
-	let imgDivArrs = [
-					"banner_shouji_big_1.webp",
-					"banner_shouji_big_2.webp",
-					"banner_shouji_big_3.webp",
-					"banner_shouji_big_4.webp",
-					"banner_shouji_big_5.webp",
-					"banner_shouji_big_6.webp",
-					"banner_shouji_big_7.webp",
-					"banner_shouji_big_8.webp",
-					"banner_shouji_big_9.webp",
-					"banner_shouji_big_10.webp",];
-	for(let i=0;i<5;i++){
+// 动态创建猜你喜欢的商品
+function ajaxLIke(){
+	$.ajax({
+		type: "get",
+		url: "getGoodsList.php",
+		data: "",
+		dataType: "json",
+		success: function (response) {
+			youLikeShopping(response);
+
+			createShopping(response);
+			console.log(response);
+		}
+		
+	});
+	
+}
+function youLikeShopping(data){
+	for(let i=0;i<6;i++){
+		// console.log(data);
 		let aDiv = document.createElement("a");
 		aDiv.style.cssText = `
 				display: inline-block;
@@ -643,8 +649,7 @@ function youLikeShopping(){
 				margin:0 auto;
 				width: 120px;
 				height: 120px;`;
-		imgDom.src = `indexImg/shopping_${i+1}.webp`;
-		imgDivArrs.push(imgDom);
+		imgDom.src = data[i].goodsImg;
 		aDiv.appendChild(imgDom);
 		let p1Dom = document.createElement("p");
 		p1Dom.style.cssText =`
@@ -656,7 +661,7 @@ function youLikeShopping(){
 				line-height: 18px;
 				text-align: left;
 				margin-top: 32px;`;
-		p1Dom.innerHTML = pMovearr[i];
+		p1Dom.innerHTML = data[i].goodsDesc;
 		aDiv.appendChild(p1Dom);
 		let p2Dom = document.createElement("p");
 		p2Dom.style.cssText =`
@@ -666,7 +671,7 @@ function youLikeShopping(){
 				font-size: 16px;
 				color: #ff0027;
 				text-align: left;`;
-		p2Dom.innerHTML = "￥33.80";
+		p2Dom.innerHTML = "￥"+data[i].goodsPrice;
 		aDiv.appendChild(p2Dom);
 		$name("#likeShopping").appendChild(aDiv);
 	}
@@ -1085,7 +1090,7 @@ function storeySkip(){
 
 	window.onscroll = function(){
 		let scrollTop1 = document.body.scrollTop || document.documentElement.scrollTop;
-		console.log(scrollTop1);
+		// console.log(scrollTop1);
 		// 侧边栏的回到顶部的出现
 		if (scrollTop1>100) {
 			$("#asideTopGo").css('display','block');
@@ -1270,13 +1275,14 @@ window.onload = function(){
 		timeSpace:2000,
 	},$name("#bannerBox"));
 
-
 	BannerAutoColor();   //轮播图的背景改变
 
 	renderTime();  //创建倒计时的盒子
 	timeCount();  //倒计时函数
-	createShopping();  //创建商品
-	youLikeShopping();  //创建你喜欢的商品
+	// createShopping();  //创建商品
+	// youLikeShopping();  //创建你喜欢的商品
+	ajaxLIke();   //ajax请求商品 并创建
+	
 	likeBtn();   //猜你喜欢的按钮
 
 	createBuy($name("#buyBox"));  //创建必买清单

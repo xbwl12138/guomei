@@ -28,6 +28,8 @@ gulp.task("copyall",async ()=>{
     .pipe(gulp.dest("D:\\phpStudy\\WWW\\guomei\\logainImg"));
     gulp.src("shoppingCarImg/*.{jpg,png,gif,webp,jpeg,ico}")
     .pipe(gulp.dest("D:\\phpStudy\\WWW\\guomei\\shoppingCarImg"));
+    gulp.src("shoppingImg/*.{jpg,png,gif,webp,jpeg,ico}")
+    .pipe(gulp.dest("D:\\phpStudy\\WWW\\guomei\\shoppingImg"));
 	
 
     // gulp.src('sass/**/*', async ()=>{
@@ -79,6 +81,10 @@ gulp.task("watchall",async ()=>{
     gulp.watch("shoppingCarImg/*.{jpg,png,gif,webp,jpeg,ico}",async ()=>{
 		gulp.src("shoppingCarImg/*.{jpg,png,gif,webp,jpeg,ico}")
 		.pipe(gulp.dest('D:\\phpStudy\\WWW\\guomei\\shoppingCarImg'));
+    })
+    gulp.watch("shoppingImg/*.{jpg,png,gif,webp,jpeg,ico}",async ()=>{
+		gulp.src("shoppingCarImg/*.{jpg,png,gif,webp,jpeg,ico}")
+		.pipe(gulp.dest('D:\\phpStudy\\WWW\\guomei\\shoppingImg'));
     })
 
 

@@ -799,10 +799,22 @@ glass*/
 		background: skyblue;
 		line-height: 42px;
 		.jing_box{
-			width:450px;
-			height:450px;
-			// background: red;
-			border:1px solid #aaa;
+			width:1200px;
+			height:530px;
+			.jing_box_left{
+				width:450px;
+				height:450px;
+				float:left;
+				.bigBox{
+					border:1px solid #aaa;
+				}
+			}
+			.jing_box_right{
+				width:720px;
+				height:530px;
+				float:right;
+				background: red;
+			}
 		}
 	}
 	

@@ -8,7 +8,10 @@ class NbeiJing{
 		this.n = n;             	 //放大倍数
 		this.boxDom = null;		
 		this.mirrorBoxDom = null;
-		this.showBoxDom = null;			
+		this.showBoxDom = null;	
+		this.ulArr = []; //存放需要移动的ul
+		this.liArr = []; //存放所有的li
+		this.btnArr = []; //存放左右按钮		
 		let defaultImg = {      	 //默认值
 			imgs:"img/1100.jpg",   	//要放大的图片
 			width:500,				//盒子宽 = 图片的宽高
@@ -28,6 +31,7 @@ class NbeiJing{
 
 		this.render();
 		this.addEvent();
+		this.btnMove();
 	}
 	// 动态创建
 	render(){
@@ -60,11 +64,11 @@ class NbeiJing{
 				height: ${this.height}px;
 				background-image:url(${this.imgs});
 				background-size: ${this.width*this.n}px ${this.height*this.n}px;
-				display: none;`;
+				display: none;
+				z-index:99;`;
 		// 将showBox添加进大盒子
 		this.boxDom.appendChild(this.showBoxDom);
         this.domObj.appendChild(this.boxDom);
-        
         // 创建ul的大盒子
         let ulJingBoxDom = document.createElement("div");
         ulJingBoxDom.style.cssText = `
@@ -87,7 +91,8 @@ class NbeiJing{
             background:url(shoppingImg/bg-sprite.png) 0 -834px;
             width:11px;
             height:21px;
-        ;`;
+		;`;
+		this.btnArr.push(leftDom);
         leftDom.appendChild(leftIDom1);
         // 创建存放ul的盒子
         let ulBoxDom = document.createElement("div");
@@ -96,18 +101,19 @@ class NbeiJing{
             float:left;
             margin-left:4px;
             overflow:hidden;
-		    position: relative;
-            height:60px;`;
+			position: relative;
+			height:62px;`;
         ulJingBoxDom.appendChild(ulBoxDom);
         // 创建ul
         let ulDom = document.createElement("ul");
         ulDom.style.cssText = `
-            width:560px;
+            width:580px;
             float:left;
             position:absolute;
             left:0px;
             top:0px;
             height:60px;`;
+		this.ulArr.push(ulDom);
         ulBoxDom.appendChild(ulDom);
         // 创建li
         for(let i=0;i<7;i++){
@@ -117,9 +123,11 @@ class NbeiJing{
                 float:left;
                 background:url(shoppingImg/shopping_${i+1}.webp);
                 background-size:60px 60px;
-                text-align:center;
+				text-align:center;
+				border:1px solid #fff;	
                 margin:0 10px;
-                height:60px;`;
+				height:60px;`;
+			this.liArr.push(liDom);
             ulDom.appendChild(liDom);  
         }
         // 创建右箭头
@@ -137,6 +145,7 @@ class NbeiJing{
             width:11px;
             height:21px;
         ;`;
+		this.btnArr.push(rightDom);
         rightDom.appendChild(leftIDom2);
         ulJingBoxDom.appendChild(rightDom);
 
@@ -174,7 +183,69 @@ class NbeiJing{
 			this.showBoxDom.style.display = "none";
 			this.mirrorBoxDom.style.display = "none";
 		}
-    }
+		let ord;
+		for(let i=0;i<this.liArr.length;i++){
+			this.liArr[i].onmouseover = ()=>{
+				ord = i;
+				this.liArr[i].style.border = "1px solid red";
+				// this.liArr[ord].style.border = "1px solid #fff";
+
+				this.boxDom.style.backgroundImage = getStyle(this.liArr[i],"background-image");
+				this.showBoxDom.style.backgroundImage = getStyle(this.liArr[i],"background-image");
+
+			}
+			this.liArr[i].onmouseout = ()=>{
+				ord = i;
+				this.liArr[i].style.border = "1px solid #fff";
+				// this.liArr[ord].style.border = "1px solid #fff";
+			}
+		}
+		
+
+				
+	}
+	btnMove(){
+		// 左右按钮移动事件
+		let myTimeleft = null;
+		let left1 = 0;
+		let ord;
+		let myTimeright = null;
+		this.btnArr[0].onclick = ()=>{
+			if(myTimeleft){
+				return;
+			}
+			myTimeleft = setInterval(()=>{
+				left1 = left1 - 2;
+				ord = Math.abs(left1);
+				if(left1<= -400){
+					left1 = -400;
+				}
+				if(ord%400 == 0){
+					window.clearInterval(myTimeleft);
+					myTimeleft = null;
+				}
+				this.ulArr[0].style.left = left1 + "px";
+			},10);
+		}
+		this.btnArr[1].onclick = ()=>{
+			if(myTimeright){
+				return;
+			}
+			console.log(left1);
+			myTimeright = setInterval(()=>{
+				left1 = left1 + 2;
+				ord = Math.abs(left1);
+				if(left1>= 0){
+					left1 = 0;
+				}
+				if(ord%400 == 0){
+					window.clearInterval(myTimeright);
+					myTimeright = null;
+				}
+				this.ulArr[0].style.left = left1 + "px";
+			},10);
+		}
+	}
     
 }
 
